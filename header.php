@@ -50,7 +50,7 @@ $HEADER = '<!DOCTYPE html>
                         <a href="#">Services</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="login.php">Login</a>
                     </li>
                 </ul>
             </div>
