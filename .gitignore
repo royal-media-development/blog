@@ -1,6 +1,7 @@
+#IntelliJ ignores
 /.idea
 blog.iml
+
+#eclipse ignores
 *.project
-/.idea
-blog.iml
 /.settings
