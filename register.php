@@ -21,7 +21,7 @@ echo $HEADER;
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1>Anmelden</h1>
+                <h1>Registrieren</h1>
                 <hr>
             </div>
             <div class="col-xs-12">
@@ -35,7 +35,20 @@ echo $HEADER;
                         <input type="password" class="form-control" placeholder="Passwort"/>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Anmelden"/>
+                        <label>Passwort wiederholen</label>
+                        <input type="password" class="form-control" placeholder="Passwort"/>
+                    </div>
+                    <div class="form-group">
+                         <label>Email</label>
+                         <input type="text" class="form-control" placeholder="Email"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Ich bin kein Roboter!</label>
+                        <input type="checkbox" class="checkbox-inline"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Registrieren"/>
                     </div>
                 </form>
             </div>
