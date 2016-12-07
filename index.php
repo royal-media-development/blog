@@ -16,43 +16,130 @@ echo $HEADER;
         <div class="row">
 
             <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
+            <div class="col-xs-12">
 
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1>Blog Post Title</h1>
-
-                <hr>
-
-                <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
-
-
-                <hr>
-
-                <!-- Blog Comments -->
-
-                <!-- Comments Form -->
-                <div class="well">
-                    <img class="img-rounded" src="http://placehold.it/900x300" alt="" width="">
-                    <hr>
-                    <button type="button" style="background-color: #398439"><span class="glyphicon glyphicon-ok"></span></button><button type="button" style="background-color:#c9302c"><span class="glyphicon glyphicon-remove"></span></button>
-                    <h4>Leave a Comment:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="2"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
+                <h1><?php echo $PAGE_TITLE; ?></h1>
 
                 <hr>
             </div>
         </div>
 
-        <!-- /.row -->
-        <hr>
+
+        <!-- Ein Post -->
+        <div class="post">
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                    <div class="well">
+                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von Chrisitan</p>
+                        <h2>Titel/Beschreibung</h2>
+                        <hr>
+
+                        <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
+                        <hr>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down"></i></button></a>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i></button></a>
+
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+        <!-- Ein Post -> Ende -->
+
+        <!-- Ein Post -->
+        <div class="post">
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                    <div class="well">
+                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von Chrisitan</p>
+                        <h2>Titel/Beschreibung</h2>
+                        <hr>
+
+                        <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
+                        <hr>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down"></i></button></a>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i></button></a>
+
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+        <!-- Ein Post -> Ende -->
+
+        <!-- Ein Post -->
+        <div class="post">
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                    <div class="well">
+                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von Chrisitan</p>
+                        <h2>Titel/Beschreibung</h2>
+                        <hr>
+
+                        <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
+                        <hr>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down"></i></button></a>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i></button></a>
+
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+        <!-- Ein Post -> Ende -->
+
+        <!-- Ein Post -->
+        <div class="post">
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                    <div class="well">
+                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von Chrisitan</p>
+                        <h2>Titel/Beschreibung</h2>
+                        <hr>
+
+                        <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
+                        <hr>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down"></i></button></a>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i></button></a>
+
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+        <!-- Ein Post -> Ende -->
+
+        <!-- Ein Post -->
+        <div class="post">
+            <div class="row">
+                <div class="col-xs-6 col-xs-offset-3">
+                    <div class="well">
+                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von Chrisitan</p>
+                        <h2>Titel/Beschreibung</h2>
+                        <hr>
+
+                        <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
+                        <hr>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down"></i></button></a>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i></button></a>
+
+                    </div>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+        <!-- Ein Post -> Ende -->
+
+
+    </div>
 
 <?php
 echo $FOOTER;
