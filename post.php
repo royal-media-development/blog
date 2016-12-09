@@ -25,7 +25,7 @@ echo $HEADER;
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">Start Bootstrap</a>
+                    by <a href="profile.php">Test User</a>
                 </p>
 
                 <hr>
@@ -36,7 +36,7 @@ echo $HEADER;
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x600" alt="">
+                <img class="img-responsive" src="http://placehold.it/900x900" alt="">
 
                 <!-- Blog Comments -->
 
