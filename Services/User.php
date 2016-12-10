@@ -1,6 +1,4 @@
 <?php
-namespace Services\User;
-
 
 class User
 {
