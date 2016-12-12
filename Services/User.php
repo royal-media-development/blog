@@ -1,6 +1,4 @@
 <?php
-namespace Services\User;
-
 
 class User
 {
@@ -8,6 +6,7 @@ class User
     private $username;
     private $password;
     private $img;
+    private $visibility;
 
     /**
      * @return mixed
@@ -57,6 +56,21 @@ class User
     public function setImg($img)
     {
         $this->img = $img;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVisibility()
+    {
+        return $this->visibility;
+    }
+    /**
+     * @param $visibility
+     */
+    public function setVisibility($visibility)
+    {
+        $this->visibility = $visibility;
     }
 
 

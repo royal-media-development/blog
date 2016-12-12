@@ -37,11 +37,12 @@ echo $HEADER;
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Anmelden"/>
                     </div>
+                    
+                    <?php
+					echo $FOOTER;
+					?>
+					
                 </form>
             </div>
         </div>
     </div>
-
-<?php
-echo $FOOTER;
-?>
