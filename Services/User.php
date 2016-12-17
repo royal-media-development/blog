@@ -8,6 +8,13 @@ class User
     private $img;
     private $visibility;
 
+    public function __construct($userId)
+    {
+        $sql = "SELECT FROM user WHERE id = $userId";
+        $result = $this->getUserInDB($userId);
+        echo $result;
+    }
+
     /**
      * @return mixed
      */
@@ -16,6 +23,10 @@ class User
         return $this->id;
     }
 
+    public function setId($id)
+    {
+       $this->id = $id;
+    }
 
     /**
      * @return mixed
@@ -65,6 +76,7 @@ class User
     {
         return $this->visibility;
     }
+
     /**
      * @param $visibility
      */
@@ -73,5 +85,27 @@ class User
         $this->visibility = $visibility;
     }
 
+    /**
+     * @param $sql
+     * @return bool|null
+     */
+    private function getUserInDB($sql)
+    {
+
+        try {
+            include '../config.php';
+            $conn = new PDO("mysql:host=$HOST;dbname=$DBNAME", $DBUSER, $DBPASSWORD);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchObject(User::class);
+        } catch (PDOException $e) {
+            $result = null;
+        }
+        $conn = null;
+
+        return $result;
+    }
 
 }
