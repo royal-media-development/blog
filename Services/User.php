@@ -10,9 +10,15 @@ class User
 
     public function __construct($userId)
     {
-        $sql = "SELECT FROM user WHERE id = $userId";
         $result = $this->getUserInDB($userId);
-        echo $result;
+        if($result) {
+            $this->setId($result["id"]);
+            $this->setUsername($result["username"]);
+            $this->setPassword($result["password"]);
+            $this->setImg($result["img"]);
+            $this->setVisibility($result["visibility"]);
+        }
+
     }
 
     /**
@@ -28,6 +34,11 @@ class User
        $this->id = $id;
     }
 
+
+    public function setUsername($username)
+    {
+       $this->username = $username;
+    }
     /**
      * @return mixed
      */
@@ -86,22 +97,21 @@ class User
     }
 
     /**
-     * @param $sql
-     * @return bool|null
+     * @param $userId
+     * @return Exception|mixed|PDOException
      */
-    private function getUserInDB($sql)
+    private function getUserInDB($userId)
     {
 
         try {
-            include '../config.php';
+            include '/../config.php';
             $conn = new PDO("mysql:host=$HOST;dbname=$DBNAME", $DBUSER, $DBPASSWORD);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare("SELECT * FROM USER WHERE id = $userId");
             $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            $result = $stmt->fetchObject(User::class);
+            $result = $stmt->fetch();
         } catch (PDOException $e) {
-            $result = null;
+            $result = $e;
         }
         $conn = null;
 
