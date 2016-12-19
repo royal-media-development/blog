@@ -5,6 +5,7 @@ include "functions.php";
 
     <body>
 <?php
+$user = new User(1);
 
 echo $HEADER;
 ?>
