@@ -8,6 +8,19 @@ class User
     private $img;
     private $visibility;
 
+    public function __construct($userId)
+    {
+        $result = $this->getUserInDB($userId);
+        if($result) {
+            $this->setId($result["id"]);
+            $this->setUsername($result["username"]);
+            $this->setPassword($result["password"]);
+            $this->setImg($result["img"]);
+            $this->setVisibility($result["visibility"]);
+        }
+
+    }
+
     /**
      * @return mixed
      */
@@ -16,7 +29,16 @@ class User
         return $this->id;
     }
 
+    public function setId($id)
+    {
+       $this->id = $id;
+    }
 
+
+    public function setUsername($username)
+    {
+       $this->username = $username;
+    }
     /**
      * @return mixed
      */
@@ -65,6 +87,7 @@ class User
     {
         return $this->visibility;
     }
+
     /**
      * @param $visibility
      */
@@ -73,5 +96,26 @@ class User
         $this->visibility = $visibility;
     }
 
+    /**
+     * @param $userId
+     * @return Exception|mixed|PDOException
+     */
+    private function getUserInDB($userId)
+    {
+
+        try {
+            include '/../config.php';
+            $conn = new PDO("mysql:host=$HOST;dbname=$DBNAME", $DBUSER, $DBPASSWORD);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT * FROM USER WHERE id = $userId");
+            $stmt->execute();
+            $result = $stmt->fetch();
+        } catch (PDOException $e) {
+            $result = $e;
+        }
+        $conn = null;
+
+        return $result;
+    }
 
 }

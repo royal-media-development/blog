@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 09. Dez 2016 um 22:38
+-- Erstellungszeit: 17. Dez 2016 um 14:36
 -- Server-Version: 10.1.19-MariaDB
 -- PHP-Version: 5.5.38
 
@@ -69,10 +69,17 @@ CREATE TABLE `post` (
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(40) NOT NULL,
   `img` varchar(70) NOT NULL,
   `visibility` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `img`, `visibility`) VALUES
+(1, 'hamza', '743bee17c137318b6c0322994773abd40b2311af', 'hamza.jpg', 1);
 
 --
 -- Indizes der exportierten Tabellen
@@ -126,7 +133,7 @@ ALTER TABLE `post`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

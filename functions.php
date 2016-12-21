@@ -19,5 +19,10 @@ include "header.php";
 include "footer.php";
 
 /**
+ * CLASSES
+ */
+
+require './Services/User.php';
+/**
  *  FUNKTIONEN
  */
