@@ -1,12 +1,10 @@
 <?php
-//Klasse Like
 class Like
 {
     private $id;
     private $post;
     private $user;
     private $value;
-    $db = new db("mysql:host=localhost;port=8080;dbname=6Pun","admin","admin");
 
 
     public function __construct($likeId)
