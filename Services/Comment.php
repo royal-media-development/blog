@@ -8,18 +8,30 @@
  */
 class Comment
 {
-    private $id;
+    private $commentID;
     private $content;
     private $contentTime;
     private $userId;
     private $postId;
 
-    public function getId(){
-        return $this -> id;
+    public function __construct($userId , $postId)
+    {
+        $result = $this->getCommentInDB($userId,$postId);
+        if($result){
+            $this->setId($result["id"]);
+            $this->setContent($result["content"]);
+            $this->setContentTime($result["contentTime"]);
+            $this->setUserId($result["userId"]);
+            $this->setPostId($result["postId"]);
+        }
     }
 
-    public function setId($id){
-        $this->id=$id;
+    public function getCommentID(){
+        return $this -> commentID;
+    }
+
+    public function setId($commentID){
+        $this->commentID = $commentID;
     }
 
     public function getContent(){
@@ -52,6 +64,22 @@ class Comment
 
     public function setPostId($postId){
         $this->postId=$postId;
+    }
+
+    private function getCommentInDB(){
+        try{
+            include '/../config.php';
+            $conn = new PDO("mysql:host=$HOST;dbname=$DBNAME , $DBCONTENT , $DBCONTENTTIME , $DBUSERID , $DBPOSTID");
+            $conn ->setAttribute(PDO :: ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn ->prepare("SELECT * FROM COMMENT WHERE commentID = $commentID");
+            $stmt ->execute();
+            $result = $stmt->fetch();
+        }catch(PDOException $e){
+            $result =$e;
+        }
+        $conn = null;
+
+        return $result;
     }
 
 }
