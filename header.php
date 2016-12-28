@@ -1,5 +1,6 @@
 <?php
-include "config.php";
+require './Services/Config.php';
+$config = new Config();
 
 $HEADER = '<!DOCTYPE html>
 <html lang="de">
@@ -11,7 +12,7 @@ $HEADER = '<!DOCTYPE html>
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>'. $PAGE_TITLE .'</title>
+    <title>'. $config->getPageTitle() .'</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +39,7 @@ $HEADER = '<!DOCTYPE html>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Home</a>
+                <a class="navbar-brand" href="index.php">Startseite</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
