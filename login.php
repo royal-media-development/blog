@@ -44,6 +44,8 @@ echo $HEADER;
 					?>
 					
                 </form>
+
             </div>
+            <p>Jetzt <a href="./register.php">Anmelden</a></p>
         </div>
     </div>

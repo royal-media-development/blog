@@ -21,7 +21,8 @@ include "footer.php";
 /**
  * CLASSES
  */
-
+require './Services/Validation.php';
+require './Services/Registration.php';
 require './Services/User.php';
 /**
  *  FUNKTIONEN

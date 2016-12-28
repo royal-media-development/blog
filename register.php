@@ -1,10 +1,31 @@
 <?php
 
 include "functions.php";
-$username=isset($_POST["username"])?$_POST["username"]:null;
-$passwort=isset($_POST["passwort"])?$_POST["passwort"]:null;
-if ((strlen($username)>0) && (strlen($passwort)>=8)){
-echo '<h3 style="color:green;">Sie haben sich erfolgreich angemeldet</h3>';
+$response = "";
+if ($_POST) {
+    $validation = new Validation();
+    $username = $_POST["username"];
+    $password = $_POST["passwort"];
+    $password2 = $_POST["passwort2"];
+    $email = $_POST["email"];
+
+    $allow = $validation->registration(
+        $username,
+        [
+            $password,
+            $password2
+        ],
+        $email
+    );
+
+    if ($allow) {
+        $registraion = new Registration($username, $password, $email);
+        if ($registraion) {
+            $response = "<h1 style='color:green;'>Sie haben sich erfolgreich Angemeldet!</h1>";
+        } else {
+            $response = "<h1 style='color:red;'>Anmeldung fehlgeschlagen!</h1>";
+        }
+    }
 }
 ?>
 
@@ -24,7 +45,7 @@ echo $HEADER;
             <div class="col-xs-12">
 
                 <!-- Blog Post -->
-
+            <?php echo $response; ?>
                 <!-- Title -->
                 <h1>Registrieren</h1>
                 <hr>
@@ -44,8 +65,8 @@ echo $HEADER;
                         <input type="password" class="form-control" placeholder="Passwort" name="passwort2"/>
                     </div>
                     <div class="form-group">
-                         <label>Email</label>
-                         <input type="text" class="form-control" placeholder="Email" name="email"/>
+                        <label>Email</label>
+                        <input type="text" class="form-control" placeholder="Email" name="email"/>
                     </div>
 
                     <div class="form-group">
