@@ -18,6 +18,7 @@ $FOOTER = '        <!-- Footer -->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/functions.js"></script>
 </body>
 
 </html>

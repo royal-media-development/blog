@@ -1,5 +1,4 @@
 <?php
-require_once "Config.php";
 class Validation extends Config
 {
     /**

@@ -1,7 +1,20 @@
 <?php
-require './Services/Config.php';
+include "autoload.php";
+$session = new Session();
+$user = $session->getUserSession();
+$userUsername = $user != null && $user->getValid() ? $user->getUsername() : "";
 $config = new Config();
-
+$navbarRight = "";
+if($userUsername != "") {
+    $navbarRight = '<li class="dropdown">
+                <a href="profile.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' . $userUsername . '<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="profile.php">Profile</a></li>
+                  <li role="separator" class="divider"></li>
+                    <li><a href="abmelden.php">Abmelden</a></li>
+                </ul>
+              </li>';
+}
 $HEADER = '<!DOCTYPE html>
 <html lang="de">
 
@@ -12,7 +25,7 @@ $HEADER = '<!DOCTYPE html>
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>'. $config->getPageTitle() .'</title>
+    <title>' . $config->getPageTitle() . '</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -53,9 +66,14 @@ $HEADER = '<!DOCTYPE html>
                     <li>
                         <a href="login.php">Login</a>
                     </li>
+                    
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                '. $navbarRight .'
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
+            
         </div>
         <!-- /.container -->
     </nav>

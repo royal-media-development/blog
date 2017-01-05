@@ -25,7 +25,7 @@ class Like
 
     public function setID($id)
     {
-    this->id = $id;
+    $this->id = $id;
     }
 
     public function getPost()

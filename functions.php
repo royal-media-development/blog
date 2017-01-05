@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+
 /**
  * Diese Datei in jedes Php Dokument einbinden
  */
@@ -21,9 +22,18 @@ include "footer.php";
 /**
  * CLASSES
  */
-require './Services/Validation.php';
-require './Services/Registration.php';
-require './Services/User.php';
+include "autoload.php";
+
 /**
- *  FUNKTIONEN
+ * @global $session Session
  */
+$session = new Session();
+
+/**
+ * FUNCTIONS
+ */
+
+function setRedirect($url)
+{
+    header('Location: ' . $url);
+}

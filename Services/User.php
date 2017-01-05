@@ -1,16 +1,22 @@
 <?php
 
-class User
+class User extends Connection
 {
     private $id;
     private $username;
     private $password;
     private $img;
     private $visibility;
+    /**
+     * @var bool
+     */
+    private $valid;
 
-    public function __construct($userId)
+    public function __construct($filter)
     {
-        $result = $this->getUserInDB($userId);
+        parent::__construct();
+        $result = $this->getUserInDB($filter);
+        $this->setValidation($result);
         if($result) {
             $this->setId($result["id"]);
             $this->setUsername($result["username"]);
@@ -97,25 +103,39 @@ class User
     }
 
     /**
-     * @param $userId
+     * @return bool
+     */
+    public function getValid()
+    {
+        return $this->valid;
+    }
+
+    /**
+     * @param bool $valid
+     */
+    public function setValid($valid)
+    {
+        $this->valid = $valid;
+    }
+
+
+
+    /**
+     * @param $filter
      * @return Exception|mixed|PDOException
      */
-    private function getUserInDB($userId)
+    private function getUserInDB($filter)
     {
+        return $this->getSelectFrom("SELECT * FROM user WHERE " . $filter);
+    }
 
-        try {
-            include '/../config.php';
-            $conn = new PDO("mysql:host=$HOST;dbname=$DBNAME", $DBUSER, $DBPASSWORD);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM USER WHERE id = $userId");
-            $stmt->execute();
-            $result = $stmt->fetch();
-        } catch (PDOException $e) {
-            $result = $e;
+    private function setValidation($result)
+    {
+        if($result["id"] != null && $result["username"] != null && strlen($result["password"]) == 40) {
+           $this->setValid(true);
+        }else {
+            $this->setValid(false);
         }
-        $conn = null;
-
-        return $result;
     }
 
 }
