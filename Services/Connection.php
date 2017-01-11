@@ -43,17 +43,30 @@ class Connection extends Config
     {
 
         $success = false;
-        if($this->parameterIsValid($param)) {
+        if ($this->parameterIsValid($param)) {
             $conn = $this->getConnection();
             $stmt = $conn->prepare($sql);
             $stmt = $this->prepareStatement($param, $stmt);
             $stmt->execute();
-            $success =  true;
+            $success = true;
         }
 
         return $success;
 
     }
+
+    /**
+     * @param $sql
+     * @return int
+     */
+    public function setUpdate($sql)
+    {
+        $conn = $this->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->rowCount();
+    }
+
 
     private function buildConnection()
     {
@@ -73,8 +86,8 @@ class Connection extends Config
     private function parameterIsValid($param)
     {
         $valid = false;
-        if(count($param) > 0 && is_array($param)){
-            $valid =  true;
+        if (count($param) > 0 && is_array($param)) {
+            $valid = true;
         }
 
         return $valid;
@@ -87,8 +100,8 @@ class Connection extends Config
      */
     private function prepareStatement($param, $statement)
     {
-        if($this->parameterIsValid($param)){
-            foreach ($param as $key => $value){
+        if ($this->parameterIsValid($param)) {
+            foreach ($param as $key => $value) {
                 $statement->bindParam($key, $value);
             }
         }

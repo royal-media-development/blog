@@ -1,5 +1,13 @@
 <?php
-class Like
+
+/**
+ * Class Like
+ *
+ * Diese Klasse muss noch von der Connection Klasse erben.
+ * extends Connection
+ * Der
+ */
+class Like extends Connection
 {
     private $id;
     private $post;
@@ -7,17 +15,16 @@ class Like
     private $value;
 
 
-    public function __construct($likeId)
+    public function __construct($postId = null)
     {
-        $result = $this->getUserInDB($likeId);
-        if($result) {
-            $this->setId($result["id"]);
-            $this->setPost($result["post"]);
-            $this->setUser($result["user"]);
-            $this->setValue($result["value"]);
-            }
+        parent::__construct();
+        if(isset($postId)){
+                //Daten aus Post holen, nur wenn Post gesetzt ist
+        }
+
 
     }
+
     public function getId()
     {
         return $this->id;
@@ -25,7 +32,7 @@ class Like
 
     public function setID($id)
     {
-    $this->id = $id;
+        $this->id = $id;
     }
 
     public function getPost()
@@ -35,8 +42,9 @@ class Like
 
     public function setPost($post)
     {
-    this->post = $post;
+        $this->post = $post;
     }
+
     public function getUser()
     {
         return $this->user;
@@ -44,7 +52,7 @@ class Like
 
     public function setUser($user)
     {
-    this->user = $user;
+        $this->user = $user;
     }
 
     public function getValue()
@@ -54,23 +62,7 @@ class Like
 
     public function setValue($value)
     {
-    this->value = $value;
+        $this->value = $value;
     }
-    private function getLikeInDB($likeId)
-    {
 
-        try {
-            include '/../config.php';
-            $conn = new PDO("mysql:host=$HOST;dbname=$DBNAME", $DBUSER, $DBPASSWORD);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM Like WHERE id = $likeId");
-            $stmt->execute();
-            $result = $stmt->fetch();
-        } catch (PDOException $e) {
-            $result = $e;
-        }
-        $conn = null;
-
-        return $result;
-    }
 }
