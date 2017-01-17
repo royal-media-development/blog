@@ -63,6 +63,7 @@ class Post extends Connection
     {
         $postId = $this->getPostID();
         return $this->getSelectFrom("SELECT * FROM POST WHERE postID = '$postId'");
+        //TEST
     }
 
 }
