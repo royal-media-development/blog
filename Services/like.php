@@ -64,5 +64,22 @@ class Like extends Connection
     {
         $this->value = $value;
     }
+<<<<<<< HEAD
+=======
+    private function getLikeInDB($likeId)
+    {
+
+        try {
+            include '/../config.php';
+            $conn = new PDO("mysql:host=$HOST;dbname=$DBNAME", $DBUSER, $DBPASSWORD);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT * FROM Like WHERE id = $likeId");
+            $stmt->execute();
+            $result = $stmt->fetch();
+        } catch (PDOException $e) {
+            $result = $e;
+        }
+        $conn = null;
+>>>>>>> parent of 07ef2d8... Like.php
 
 }
