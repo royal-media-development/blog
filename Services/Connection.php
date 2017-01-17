@@ -72,8 +72,7 @@ class Connection extends Config
         $conn = $this->getConnection();
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        $success = true;
-        return $success;
+        return $stmt->rowCount();
     }
 
 
