@@ -67,6 +67,15 @@ class Connection extends Config
         return $stmt->rowCount();
     }
 
+    public function setDelete($sql)
+    {
+        $conn = $this->getConnection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $success = true;
+        return $success;
+    }
+
 
     private function buildConnection()
     {
