@@ -1,5 +1,4 @@
 <?php
-
 class Post extends Connection
 {
     private $postID;
@@ -7,15 +6,17 @@ class Post extends Connection
     private $postdate;
     private $img;
 
-    public function __construct($postID)
+    public function __construct($postID = null)
     {
         parent::__construct();
-        $result = $this->getPostInDB();
-        if ($result) {
-            $this->setPostID($result["id"]);
-            $this->setUserID($result["post"]);
-            $this->setPostDate($result["user"]);
-            $this->setImg($result["value"]);
+        if(isset($postID)){
+        	$result = $this->getPostInDB();
+        	if ($result) {
+        		$this->setPostID($result["id"]);
+        		$this->setUserID($result["post"]);
+        		$this->setPostDate($result["user"]);
+        		$this->setImg($result["value"]);
+        	}
         }
     }
 
