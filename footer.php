@@ -19,6 +19,26 @@ $FOOTER = '        <!-- Footer -->
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/functions.js"></script>
+
+    <script type="text/javascript">
+
+        var datastring = $("#contactForm").serialize();
+        $.ajax({
+            type: "POST",
+            url: "your url.php",
+            data: datastring,
+            dataType: "json",
+            success: function(data) {
+                //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+                // do what ever you want with the server response
+            },
+            error: function() {
+                alert('error handing here');
+            }
+        });
+
+    </script>
+
 </body>
 
 </html>
