@@ -37,3 +37,9 @@ function setRedirect($url)
 {
     header('Location: ' . $url);
 }
+
+function getCurrentDateTime(){
+	$date = getdate();
+	$datename = $date["year"]."-".$date["month"]."-".$date["yday"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+	return $datename;
+}

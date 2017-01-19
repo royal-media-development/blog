@@ -27,6 +27,14 @@ echo $HEADER;
             </div>
         </div>
 
+		<div class="row">
+			<div class="col-xs-12">
+				<form action="newpost.php" method="post" enctype="multipart/form-data">
+					<input name="file" type="file"/>
+					<input class="form-control" type="submit" value="upload"/>
+				</form>
+			</div>
+		</div>
 
         <!-- Ein Post -->
         <div class="post">
