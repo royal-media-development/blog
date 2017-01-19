@@ -65,7 +65,6 @@ class Like extends Connection
 
         $userId = $this->user->getId();
         $postId = $this->post->getPostID();
-        $connection = new Connection;
         $result = $this->getLikeInDB();
         $isLiked = count($result["id"]);  // bin mir da nicht so sicher ob das so klappt
         $value = $this->getValue();
@@ -86,11 +85,10 @@ class Like extends Connection
 
         $userId = $this->user->getId();
         $postId = $this->post->getPostID();
-        $connection = new Connection;
 
-        $result = $connection->getSelectFrom("SELECT * FROM LIKE WHERE user_id='$userId' AND post_id='$postId'");
+        $result = $this->getSelectFrom("SELECT * FROM LIKE WHERE user_id='$userId' AND post_id='$postId'");
         $result = $result[0];
-        $isLiked = count($result["id"]);  // bin mir da nicht so sicher ob das so klappt
+        $isLiked = count($result["id"]);
         $value = $result["value"];
         if ($isLiked == 1 && $value == -1) {
             $this->setDelete("DELETE FROM LIKE WHERE post_id='$postId' AND user_id='$userId'");
@@ -111,10 +109,6 @@ class Like extends Connection
     {
         return $this->user->getId();
     }
-
-
-
-
 
 
 }

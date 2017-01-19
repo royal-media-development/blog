@@ -10,6 +10,12 @@ if($session->isUserLoggedIn()) {
 
     $result = $result[0];
     count($result["id"]);
+    $post = new Post($_POST["post_id"]);
+
+    $like = new Like($_POST["post_id"], $session->getUserSession(), $post);
+
+
+    $like->setLike();
 }
 
 /**

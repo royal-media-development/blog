@@ -47,8 +47,8 @@ echo $HEADER;
 
                         <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
                         <hr>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down"></i></button></a>
+                        <button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up postLike" post_id="12"></i></button>
+                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down postDislike"></i></button></a>
                         <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i></button></a>
 
                     </div>
