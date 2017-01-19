@@ -1,12 +1,12 @@
 <?php
-
+include "function.php";
 /**
  * Created by IntelliJ IDEA.
  * User: cdanial
  * Date: 13.12.2016
  * Time: 11:42
  */
-class Comment
+class Comment extends connection
 {
     private $commentID;
     private $content;
@@ -66,20 +66,8 @@ class Comment
         $this->postId=$postId;
     }
 
-    private function getCommentInDB(){
-        try{
-            include '/../config.php';
-            $conn = new PDO("mysql:host=$HOST;dbname=$DBNAME , $DBCONTENT , $DBCONTENTTIME , $DBUSERID , $DBPOSTID");
-            $conn ->setAttribute(PDO :: ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn ->prepare("SELECT * FROM COMMENT WHERE commentID = $commentID");
-            $stmt ->execute();
-            $result = $stmt->fetch();
-        }catch(PDOException $e){
-            $result =$e;
-        }
-        $conn = null;
-
-        return $result;
+    private function getCommentInDB($filter){
+    return $this->getSelectFrom("SELECT*FROM comment WHERE".$filter);
     }
 
 }
