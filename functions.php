@@ -39,7 +39,6 @@ function setRedirect($url)
 }
 
 function getCurrentDateTime(){
-	$date = getdate();
-	$datename = $date["year"]."-".$date["month"]."-".$date["yday"]." ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
+	$datename = getdate(year)."-".getdate(month)."-".getdate(yday)." ".getdate(hours).":".getdate(minutes).":".getdate(seconds);
 	return $datename;
 }

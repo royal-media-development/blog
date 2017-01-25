@@ -7,6 +7,10 @@ include "functions.php";
 <?php
 
 echo $HEADER;
+
+	$connection = new Connection();
+	$result = $connection->getSelectFrom("SELECT * FROM post");
+	
 ?>
 
 
@@ -26,26 +30,21 @@ echo $HEADER;
                 <hr>
             </div>
         </div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<form action="newpost.php" method="post" enctype="multipart/form-data">
-					<input name="file" type="file"/>
-					<input class="form-control" type="submit" value="upload"/>
-				</form>
-			</div>
-		</div>
-
-        <!-- Ein Post -->
+	
+		<?php 		
+		foreach ($result as $resu){
+			
+		$name = $connection->getSelectFrom("SELECT username FROM user LEFT JOIN post ON user.id=post.user_id WHERE user.id = ".$resu["user_id"])[0];
+		?>	
+        
         <div class="post">
             <div class="row">
                 <div class="col-xs-6 col-xs-offset-3">
                     <div class="well">
-                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von Chrisitan</p>
-                        <h2>Titel/Beschreibung</h2>
+                        <?php echo '<p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von '.$name["username"].'</p>' ?>
                         <hr>
 
-                        <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
+						<?php echo '<img class="img-rounded" src="img/'.$resu["img"].'">' ?>
                         <hr>
                         <button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up postLike" post_id="12"></i></button>
                         <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down postDislike"></i></button></a>
@@ -56,96 +55,8 @@ echo $HEADER;
                 </div>
             </div>
         </div>
-        <!-- Ein Post -> Ende -->
-
-        <!-- Ein Post -->
-        <div class="post">
-            <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                    <div class="well">
-                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von Chrisitan</p>
-                        <h2>Titel/Beschreibung</h2>
-                        <hr>
-
-                        <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
-                        <hr>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down"></i></button></a>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i></button></a>
-
-                    </div>
-                    <hr/>
-                </div>
-            </div>
-        </div>
-        <!-- Ein Post -> Ende -->
-
-        <!-- Ein Post -->
-        <div class="post">
-            <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                    <div class="well">
-                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von Chrisitan</p>
-                        <h2>Titel/Beschreibung</h2>
-                        <hr>
-
-                        <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
-                        <hr>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down"></i></button></a>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i></button></a>
-
-                    </div>
-                    <hr/>
-                </div>
-            </div>
-        </div>
-        <!-- Ein Post -> Ende -->
-
-        <!-- Ein Post -->
-        <div class="post">
-            <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                    <div class="well">
-                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von Chrisitan</p>
-                        <h2>Titel/Beschreibung</h2>
-                        <hr>
-
-                        <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
-                        <hr>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down"></i></button></a>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i></button></a>
-
-                    </div>
-                    <hr/>
-                </div>
-            </div>
-        </div>
-        <!-- Ein Post -> Ende -->
-
-        <!-- Ein Post -->
-        <div class="post">
-            <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                    <div class="well">
-                        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM von Chrisitan</p>
-                        <h2>Titel/Beschreibung</h2>
-                        <hr>
-
-                        <img class="img-rounded" src="http://placehold.it/350x350" alt="" width="">
-                        <hr>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-up"></i></button></a>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-thumbs-down"></i></button></a>
-                        <a href=""><button class="btn btn-default"><i class="glyphicon glyphicon-comment"></i></button></a>
-
-                    </div>
-                    <hr/>
-                </div>
-            </div>
-        </div>
-        <!-- Ein Post -> Ende -->
-
+        
+        <?php }?>
 
     </div>
 

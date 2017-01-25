@@ -1,12 +1,11 @@
 <?php
-include "function.php";
 /**
  * Created by IntelliJ IDEA.
  * User: cdanial
  * Date: 13.12.2016
  * Time: 11:42
  */
-class Comment extends connection
+class Comment extends Connection
 {
     private $commentID;
     private $content;

@@ -126,7 +126,7 @@ class User extends Connection
      */
     private function getUserInDB($filter)
     {
-        return $this->getSelectFrom("SELECT * FROM user WHERE " . $filter);
+        return $this->getSelectFrom("SELECT * FROM user WHERE " . $filter)[0];
     }
 
     private function setValidation($result)

@@ -13,16 +13,14 @@
 			$user = $session->getUserSession();
 			$userid = $user->getId();
 			
+			$currentDateTime = getCurrentDateTime();
+			
 			$connection = new Connection();
-			$connection->setInsert("INSERT INTO POST (user_id, postdate, img) VALUES (:user_id, :postdate, :img)", [
-					':user_id'=>$userid,
-					':postdate'=>$postdate,
-					':img'=>$filename,
-			]);
+			$connection->setInsertNoParam("INSERT INTO POST (user_id, postdate, img) VALUES ('$userid', '$currentDateTime', '$filename')");
 			
 			setRedirect("./profile.php");
 		} else {
-			setRedirect("./index.php");
+			setRedirect("./profile.php");
 		}
 	}else{
 		setRedirect("./index.php");

@@ -30,7 +30,10 @@ class Connection extends Config
         $conn = self::$connection;
         $stmt = $conn->prepare($sql);
         $stmt->execute();
-        $result = $stmt->fetch();
+        $result = [];
+        foreach ($conn->query($sql) as $row) {
+        	$result[] = $row;
+        }
         return $result;
     }
 
@@ -53,6 +56,24 @@ class Connection extends Config
 
         return $success;
 
+    }
+    
+    /**
+     * @param $sql
+     * @param $param array
+     * @return bool
+     */
+    public function setInsertNoParam($sql)
+    {
+    
+    	$success = false;
+    	$conn = $this->getConnection();
+    	$stmt = $conn->prepare($sql);
+    	$stmt->execute();
+    	$success = true;
+    
+    	return $success;
+    
     }
 
     /**

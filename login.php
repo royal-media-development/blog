@@ -1,7 +1,7 @@
 <?php
 include "functions.php";
 if ($session->isUserLoggedIn()) {
-    echo "<h1>Sie sind angemeldet</h1>";
+    setRedirect("./index.php");
 }
 /**
  * @global $session Session
