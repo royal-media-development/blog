@@ -43,12 +43,12 @@ echo $HEADER;
                 <!-- Comments Form -->
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form method="post" role="form" action="newComment.php">
+                    <form method="post" role="form" action="newcomment.php">
                         <div class="form-group">
                             <textarea class="form-control" name="content" rows="3"></textarea>
                             <input type="hidden" name="post_id" value="5">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
 
